@@ -1,0 +1,6 @@
+name: OpPrison
+version: '${project.version}'
+main: ru.snowyk.opprison.OpPrison
+api-version: '1.16'
+authors: [Snowyk]
+description: OpPrison Plugin

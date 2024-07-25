@@ -1,0 +1,22 @@
+MySQL:
+  database: s53431_OpPrison
+  address: f1.aurorix.net
+  user: u53431_oTKbHjjku9
+  password: gIgnCCBnzz=ZW2@=kfz+Z7SA
+  refresh-statistic: 3
+spawn:
+  world: world
+  x: 0.5
+  y: 150
+  z: 0.5
+scoreboard-name: '&b&lOpPrison'
+scoreboard:
+  - '&b&lПрогресс'
+  - ' &fПрестиж: &a%opprison_prestige%'
+  - ' &fРанг: %opprison_rank%'
+  - ' &r'
+  - '&b&lИнформация'
+  - ' &fТокенов: &b%opprison_tokens%'
+  - ' &fБлоков: &b%opprison_blocks%'
+  - ' &fДенег: &b%opprison_money%'
+  - ' &fБустер: &b%opprison_multiplier%'

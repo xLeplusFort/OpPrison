@@ -1,0 +1,17 @@
+regions:
+  a:
+    weight: 1
+    location:
+      world: world
+      min: 5 92 -28
+      max: 61 149 28
+    flags:
+      blockbreak: true
+      blockplace: false
+      pvp: false
+mines:
+  a:
+    update: 120
+    regions: ['a']
+    content: ['STONE:75','COAL_ORE:10', 'IRON_ORE:5', 'GOLD_ORE:5']
+    upperContent: 'STONE'
