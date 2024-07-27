@@ -16,8 +16,8 @@ public class ConfigManager {
     File configFile;
     FileConfiguration region;
     File regionFile;
-    FileConfiguration location;
-    File locationFile;
+    FileConfiguration bosses;
+    File bossesFile;
 
     public static ConfigManager getInstance() {
         return instance;
@@ -61,6 +61,21 @@ public class ConfigManager {
         }
 
         this.region = YamlConfiguration.loadConfiguration(this.regionFile);
+        this.bossesFile = new File(plugin.getDataFolder(), "bosses.yml");
+        if (!this.bossesFile.exists()) {
+            try {
+                Bukkit.getConsoleSender().sendMessage("[OpPrison] The region.yml file cannot be found, creating one.");
+                file = new File(plugin.getDataFolder(), "/bosses.yml");
+                inputStream = this.getClass().getResourceAsStream("/bosses.yml");
+                copyFile(inputStream, file);
+            } catch (Exception var15) {
+                exception = var15;
+                Bukkit.getConsoleSender().sendMessage("[OpPrison] " + ChatColor.RED + "Error: The bosses.yml file could not be created! StackTrace:");
+                exception.printStackTrace();
+            }
+        }
+
+        this.bosses = YamlConfiguration.loadConfiguration(this.bossesFile);
     }
 
     public FileConfiguration getConfig() {
@@ -69,6 +84,10 @@ public class ConfigManager {
 
     public FileConfiguration getRegion() {
         return region;
+    }
+
+    public FileConfiguration getBosses() {
+        return bosses;
     }
 
     public static void copyFile(InputStream in, File out) throws Exception {

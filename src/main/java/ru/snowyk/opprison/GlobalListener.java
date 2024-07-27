@@ -15,7 +15,7 @@ public class GlobalListener implements Listener {
 
     @EventHandler
     public void join(PlayerJoinEvent event) {
-        FileConfiguration config = ConfigManager.instance.config;
+        FileConfiguration config = ConfigManager.getInstance().getConfig();
         ConfigurationSection location = config.getConfigurationSection("spawn");
         event.setJoinMessage((String)null);
         event.getPlayer().teleport(new Location(Bukkit.getWorld(location.getString("world")), location.getDouble("x"), location.getDouble("y"), location.getDouble("z")));
@@ -35,7 +35,7 @@ public class GlobalListener implements Listener {
 
     @EventHandler
     public void respawn(PlayerRespawnEvent e) {
-        FileConfiguration config = ConfigManager.instance.config;
+        FileConfiguration config = ConfigManager.getInstance().getConfig();
         ConfigurationSection location = config.getConfigurationSection("spawn");
         e.setRespawnLocation(new Location(Bukkit.getWorld(location.getString("world")), location.getDouble("x"), location.getDouble("y"), location.getDouble("z")));
     }

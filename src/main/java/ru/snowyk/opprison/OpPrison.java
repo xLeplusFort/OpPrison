@@ -2,9 +2,15 @@ package ru.snowyk.opprison;
 
 import fr.minuskube.netherboard.bukkit.BPlayerBoard;
 import org.bukkit.Bukkit;
+import org.bukkit.World;
+import org.bukkit.entity.ArmorStand;
+import org.bukkit.entity.Entity;
+import org.bukkit.entity.ItemFrame;
+import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 import ru.snowyk.opprison.api.OpPlayer;
 import ru.snowyk.opprison.api.OpPlayerManager;
+import ru.snowyk.opprison.boss.Spawner;
 import ru.snowyk.opprison.database.MySQL;
 import ru.snowyk.opprison.regions.RegionConfig;
 import ru.snowyk.opprison.regions.RegionManager;
@@ -32,6 +38,8 @@ public final class OpPrison extends JavaPlugin {
         this.getServer().getScheduler().runTaskTimerAsynchronously(this, () -> {
             this.refreshStatistic();
         }, 600L, (long)this.getConfig().getDouble("MySQL.refresh-statistic") * 20L);
+        (new Spawner.SpawnerUpdater()).runTaskTimer(this, 0L, 20L);
+        Spawner.SpawnerUtils.init();
         this.connectMySQL();
         if (Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null) {
             (new Placeholders(this)).register();
@@ -56,6 +64,7 @@ public final class OpPrison extends JavaPlugin {
 
     @Override
     public void onDisable() {
+        Spawner.spawners.values().forEach(Spawner::removeHolo);
         this.refreshStatistic();
         disconnectMySQL();
         // Plugin shutdown logic

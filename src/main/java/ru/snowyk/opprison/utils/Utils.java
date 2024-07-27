@@ -1,7 +1,12 @@
 package ru.snowyk.opprison.utils;
 
+import net.minecraft.server.v1_16_R3.ChatMessageType;
+import net.minecraft.server.v1_16_R3.IChatBaseComponent;
+import net.minecraft.server.v1_16_R3.PacketPlayOutChat;
 import org.bukkit.*;
 import org.bukkit.block.Block;
+import org.bukkit.craftbukkit.v1_16_R3.entity.CraftPlayer;
+import org.bukkit.entity.Player;
 import org.bukkit.event.block.BlockBreakEvent;
 import ru.snowyk.opprison.OpPrison;
 import ru.snowyk.opprison.api.OpPlayer;
@@ -10,10 +15,7 @@ import ru.snowyk.opprison.regions.Region;
 import ru.snowyk.opprison.tools.pickaxe.PickaxeEnchant;
 
 import java.text.DecimalFormat;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.function.Function;
@@ -136,5 +138,24 @@ public class Utils {
         } else {
             return false;
         }
+    }
+
+    public static HashMap<String, Double> calculatePercents(HashMap<String, Integer> attackers, double damage) {
+        HashMap<String, Double> percents = new HashMap();
+        Iterator var4 = attackers.entrySet().iterator();
+
+        while(var4.hasNext()) {
+            Map.Entry<String, Integer> entry = (Map.Entry)var4.next();
+            percents.put(entry.getKey(), (double)(Integer)entry.getValue() / damage);
+        }
+
+        return percents;
+    }
+
+    public static void sendActionBar(Player p, String boss, float health) {
+        String message = color(String.format("&7Здоровье %s &c&l%s❤", boss, (int)health));
+        IChatBaseComponent cbc = IChatBaseComponent.ChatSerializer.a("{\"text\": \"" + message + "\"}");
+        PacketPlayOutChat ppoc = new PacketPlayOutChat(cbc, ChatMessageType.a((byte)2), p.getUniqueId());
+        ((CraftPlayer)p).getHandle().playerConnection.sendPacket(ppoc);
     }
 }
