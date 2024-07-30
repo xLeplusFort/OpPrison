@@ -1,13 +1,18 @@
 package ru.snowyk.opprison.regions;
 
 import io.netty.util.internal.ConcurrentSet;
+import lombok.Getter;
 import org.bukkit.Location;
 import ru.snowyk.opprison.mines.MineManager;
 import ru.snowyk.opprison.utils.V3;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
+@Getter
 public class RegionManager {
     private final WorldGuard worldGuard;
     private final RegionConfig regionConfig;
@@ -57,21 +62,5 @@ public class RegionManager {
 
     public Region getPrimaryRegion(Location loc) {
         return (Region)this.getContainRegions(loc).get(0);
-    }
-
-    public WorldGuard getWorldGuard() {
-        return this.worldGuard;
-    }
-
-    public RegionConfig getConfig() {
-        return this.regionConfig;
-    }
-
-    public MineManager getMines() {
-        return this.mineManager;
-    }
-
-    public Set<Region> getRegions() {
-        return this.regions;
     }
 }

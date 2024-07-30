@@ -2,25 +2,18 @@ package ru.snowyk.opprison.utils;
 
 import com.mojang.authlib.GameProfile;
 import com.mojang.authlib.properties.Property;
-import java.lang.reflect.Field;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
-import java.util.UUID;
 import org.apache.commons.codec.binary.Base64;
 import org.bukkit.Color;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.BookMeta;
-import org.bukkit.inventory.meta.ItemMeta;
-import org.bukkit.inventory.meta.LeatherArmorMeta;
-import org.bukkit.inventory.meta.PotionMeta;
-import org.bukkit.inventory.meta.SkullMeta;
+import org.bukkit.inventory.meta.*;
 import org.bukkit.potion.PotionData;
 import org.bukkit.potion.PotionType;
+
+import java.lang.reflect.Field;
+import java.util.*;
 
 public class ItemBuilder {
     private ItemStack is;
@@ -214,7 +207,6 @@ public class ItemBuilder {
         return this;
     }
 
-    /** @deprecated */
     public ItemBuilder setLeatherArmorColor(Color color) {
         try {
             LeatherArmorMeta im = (LeatherArmorMeta)this.is.getItemMeta();

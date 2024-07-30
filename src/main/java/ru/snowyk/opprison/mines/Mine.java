@@ -1,5 +1,6 @@
 package ru.snowyk.opprison.mines;
 
+import lombok.Getter;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -13,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+@Getter
 public class Mine {
     private static final Random RND = new Random();
     private final String id;
@@ -106,30 +108,6 @@ public class Mine {
 
     public static MineBuilder builder() {
         return new MineBuilder();
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public List<Region> getRegions() {
-        return regions;
-    }
-
-    public List<ResourceBlock> getContent() {
-        return content;
-    }
-
-    public ResourceBlock getUpperContent() {
-        return upperContent;
-    }
-
-    public int getUpdate() {
-        return update;
-    }
-
-    public long getNextUpdate() {
-        return nextUpdate;
     }
 
     public static class MineBuilder {

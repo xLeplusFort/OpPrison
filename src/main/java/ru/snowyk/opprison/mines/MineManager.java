@@ -5,7 +5,10 @@ import org.bukkit.Bukkit;
 import org.bukkit.scheduler.BukkitTask;
 import ru.snowyk.opprison.OpPrison;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
 
 public class MineManager {
     private final Set<Mine> mines = new ConcurrentSet();

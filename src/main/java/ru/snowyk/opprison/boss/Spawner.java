@@ -1,13 +1,7 @@
 package ru.snowyk.opprison.boss;
 
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.UUID;
-import java.util.concurrent.TimeUnit;
 import net.minecraft.server.v1_16_R3.Entity;
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -16,6 +10,12 @@ import org.bukkit.entity.EntityType;
 import org.bukkit.scheduler.BukkitRunnable;
 import ru.snowyk.opprison.ConfigManager;
 import ru.snowyk.opprison.utils.Utils;
+
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.UUID;
+import java.util.concurrent.TimeUnit;
 
 public class Spawner {
     public static Map<UUID, Spawner> spawners = new HashMap();

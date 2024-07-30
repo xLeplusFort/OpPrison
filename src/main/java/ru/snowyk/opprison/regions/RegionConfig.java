@@ -67,7 +67,7 @@ public class RegionConfig {
                 }
             });
         }
-        regionManager.getMines().clearMines();
-        regionManager.getMines().addMines(mines);
+        regionManager.getMineManager().clearMines();
+        regionManager.getMineManager().addMines(mines);
     }
 }
